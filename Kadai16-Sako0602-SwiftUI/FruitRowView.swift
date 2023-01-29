@@ -14,39 +14,36 @@ struct FruitRowView: View {
     
     var body: some View {
         HStack{
-            HStack{
-                Button {
-                    fruit.isChecked.toggle()
-                } label: {
-                    HStack{
-                        Image(systemName: fruit.isChecked
-                              ? "checkmark"
-                              : ""
-                        )
-                        .foregroundColor(Color.red)
-                        .frame(width: 30, height: 30)
-                        Text(fruit.name)
-                    }
+            Button {
+                fruit.isChecked.toggle()
+            } label: {
+                HStack{
+                    Image(systemName: fruit.isChecked
+                          ? "checkmark"
+                          : ""
+                    )
+                    .foregroundColor(Color.red)
+                    .frame(width: 30, height: 30)
+                    Text(fruit.name)
                 }
-                .foregroundColor(Color.black)
-                Spacer()
-                Button {
-                    isPresented = true
-                } label: {
-                    Image(systemName: "info.circle")
-                }
-                .buttonStyle(BorderlessButtonStyle())
             }
+            .foregroundColor(Color.black)
+            Spacer()
+            Button {
+                isPresented = true
+            } label: {
+                Image(systemName: "info.circle")
+            }
+            .buttonStyle(BorderlessButtonStyle())
         }
         .sheet(isPresented: $isPresented) {
-            EditView(fruit: $fruit) { name in 
+            EditView(fruit: $fruit) { name in
                 fruit.name = name
                 fruit.isChecked = false
                 isPresented = false
             } cancel: {
                 isPresented = false
             }
-
         }
     }
 }
