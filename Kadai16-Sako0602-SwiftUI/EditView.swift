@@ -9,16 +9,16 @@ import SwiftUI
 
 struct EditView: View {
     
+    @Binding var fruit: FruitsData
     @State private var textNewItem = ""
-    @State private var textNum = 0
     let save: (String) -> Void
     let cancel: () -> Void
     
     var body: some View {
         NavigationStack{
             HStack{
-                Text("名前の変更")
-                TextField("", text: $textNewItem)
+                Text("名前")
+                TextField(fruit.name, text: $textNewItem)
                     .frame(width: 210,height: 50)
                     .border(Color.black)
                     .padding()
@@ -43,8 +43,8 @@ struct EditView: View {
     }
 }
 
-struct TestView_Previews: PreviewProvider {
+struct EditView_Previews: PreviewProvider {
     static var previews: some View {
-        EditView(save: { _  in }, cancel: {})
+        EditView(fruit: Binding<FruitsData>.constant(FruitsData(name: "りんご", isChecked: false)), save: { _  in }, cancel: {})
     }
 }

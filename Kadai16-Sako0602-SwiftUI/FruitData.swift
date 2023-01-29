@@ -12,3 +12,4 @@ struct FruitsData: Identifiable {
     var name: String
     var isChecked: Bool
 }
+
