@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct FruitsData: Identifiable {
     let id = UUID()

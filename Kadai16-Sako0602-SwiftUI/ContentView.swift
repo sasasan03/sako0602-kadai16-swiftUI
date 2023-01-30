@@ -9,7 +9,9 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var isPresented = false
+    @State private var isPresentedAddView = false
+    @State private var isPresentedEditVIew = false
+    @State public var fruitIndex = 0
     @State private var fruitArray = [
         FruitsData(name: "りんご", isChecked: false),
         FruitsData(name: "みかん", isChecked: true),
@@ -19,28 +21,66 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            List (fruitArray) { item in
-                FruitRowView(fruit: item)
+            List {
+                ForEach(fruitArray.indices, id: \.self) { index in
+                    HStack{
+                        Button {
+                            fruitArray[index].isChecked.toggle()
+                        } label: {
+                            HStack{
+                                Image(systemName: fruitArray[index].isChecked
+                                      ? "checkmark"
+                                      : ""
+                                )
+                                .foregroundColor(Color.red)
+                                .frame(width: 30, height: 30)
+                                Text(fruitArray[index].name)
+                            }
+                        }
+                        .foregroundColor(Color.black)
+                        Spacer()
+                        Button {
+                            fruitIndex = index
+                            isPresentedEditVIew = true
+                        } label: {
+                            Image(systemName: "info.circle")
+                        }
+                        .buttonStyle(BorderlessButtonStyle())
+                    }
+                }
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-                        isPresented = true
+                        isPresentedAddView = true
                     }, label: {
                         Image(systemName: "plus")
                     })
                     .padding()
                 }
             }
-            .sheet(isPresented: $isPresented) {
+            .sheet(isPresented: $isPresentedAddView) {
                 FruitsAddView(
                     save: { name in
                         fruitArray.append(FruitsData(name: name, isChecked: false))
-                        isPresented = false
+                        isPresentedAddView = false
                     } ,cancel: {
-                        isPresented = false
+                        isPresentedAddView = false
                     }
                 )
+            }
+            .sheet(isPresented: $isPresentedEditVIew)  {
+                let save: (String) -> Void = { name in
+                    fruitArray[fruitIndex].name = name
+                    fruitArray[fruitIndex].isChecked = false
+                    isPresentedEditVIew = false
+                }
+                EditView(
+                    fruitData: $fruitArray[fruitIndex],
+                    save: save
+                ){
+                    isPresentedEditVIew = false
+                }
             }
         }
     }
