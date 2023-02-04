@@ -10,7 +10,6 @@ import SwiftUI
 struct EditView: View {
     
     @State var fruitName: String
-//    @Binding var fruitData: FruitsData
     @State private var textFruits = ""
     let save: (String) -> Void
     let cancel: () -> Void
