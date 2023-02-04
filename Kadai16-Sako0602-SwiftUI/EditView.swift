@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct EditView: View {
-
-    @Binding var fruitData: FruitsData
+    
+    @State var fruitName: String
+//    @Binding var fruitData: FruitsData
+    @State private var textFruits = ""
     let save: (String) -> Void
     let cancel: () -> Void
     
@@ -17,7 +19,7 @@ struct EditView: View {
         NavigationStack{
             HStack{
                 Text("名前")
-                TextField("", text: $fruitData.name)
+                TextField("", text: $fruitName)
                     .frame(width: 210,height: 50)
                     .border(Color.black)
                     .padding()
@@ -33,7 +35,7 @@ struct EditView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("save"){
-                        save(fruitData.name)
+                        save(fruitName)
                     }
                 }
             }
@@ -44,6 +46,6 @@ struct EditView: View {
 
 struct EditView_Previews: PreviewProvider {
     static var previews: some View {
-        EditView(fruitData: Binding<FruitsData>.constant(FruitsData(name: "りんご", isChecked: false)), save: { _  in }, cancel: {})
+        EditView(fruitName: "りんご", save: { _ in }, cancel: {})
     }
 }

@@ -76,11 +76,12 @@ struct ContentView: View {
                     isPresentedEditVIew = false
                 }
                 EditView(
-                    fruitData: $fruitArray[fruitIndex],
-                    save: save
-                ){
-                    isPresentedEditVIew = false
-                }
+                    fruitName: fruitArray[fruitIndex].name,
+                    save: save,
+                    cancel: {
+                        isPresentedEditVIew = false
+                    }
+                )
             }
         }
     }
