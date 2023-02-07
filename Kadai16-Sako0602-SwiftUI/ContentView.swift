@@ -7,19 +7,22 @@
 
 import SwiftUI
 
+//キャプチャを使ってfruitIndexにButtonが押された後のindexを渡したい。
 struct ContentView: View {
     
     @State private var isPresentedAddView = false
     @State private var isPresentedEditVIew = false
-    @State public var fruitIndex = 0
+    @State var fruitIndex: Int = 0
+//    @State var fruitIndex: () -> Int
     @State private var fruitArray = [
-        FruitsData(name: "りんご", isChecked: false),
+        FruitsData(name: "もも", isChecked: false),
         FruitsData(name: "みかん", isChecked: true),
         FruitsData(name: "バナナ", isChecked: false),
         FruitsData(name: "パイナップル", isChecked: true),
     ]
     
     var body: some View {
+        
         NavigationStack {
             List {
                 ForEach(fruitArray.indices, id: \.self) { index in
@@ -35,12 +38,30 @@ struct ContentView: View {
                                 .foregroundColor(Color.red)
                                 .frame(width: 30, height: 30)
                                 Text(fruitArray[index].name)
+//                                Text("\(fruitIndex)")
+//                                   .foregroundColor(Color.white)
                             }
                         }
                         .foregroundColor(Color.black)
                         Spacer()
                         Button {
-                            fruitIndex = index
+                            print(">>>fruitIndex", fruitIndex)
+//                            fruitIndex = capture(index: index)()//❌
+//                            fruitIndex = index
+                            print("¥¥¥fruitIndex", fruitIndex)
+//                            appDate(index: fruitIndex, text: fruitArray[fruitIndex].name)//🙆
+                            aaa(index: index) { num in
+                                fruitIndex
+                            }
+//                                fruitIndex = {
+//                                    var fruitNum = 0
+//                                    fruitNum = index
+//                                    return fruitNum
+//                                }
+//                            fruitArray[fruitIndex].name = capture(index: index)()//🙆
+                            let checkNum = fruitIndex()
+                            print("++++", checkNum)
+                            print("***fruitIndex", fruitIndex)
                             isPresentedEditVIew = true
                         } label: {
                             Image(systemName: "info.circle")
@@ -69,15 +90,19 @@ struct ContentView: View {
                     }
                 )
             }
-            .sheet(isPresented: $isPresentedEditVIew)  {
-                let save: (String) -> Void = { name in
-                    fruitArray[fruitIndex].name = name
-                    fruitArray[fruitIndex].isChecked = false
-                    isPresentedEditVIew = false
-                }
-                EditView(
-                    fruitName: fruitArray[fruitIndex].name,
-                    save: save,
+            .sheet(isPresented: $isPresentedEditVIew) {
+                
+                let jjj = fruitIndex()
+                let _ = print("|||", jjj)
+                EditView (
+                    fruitNewItem: fruitArray[fruitIndex()].name,//ここで関数を読んで上書き
+                    save: { name in
+                        print(">>>sheet", fruitIndex)
+                        print(">>>", fruitArray[fruitIndex()].name)
+                        fruitArray[fruitIndex()].name = name
+                        fruitArray[fruitIndex()].isChecked = false
+                        isPresentedEditVIew = false
+                    },
                     cancel: {
                         isPresentedEditVIew = false
                     }
@@ -85,10 +110,21 @@ struct ContentView: View {
             }
         }
     }
+    func appDate(index: Int, text: String) {
+        fruitArray[index].name = text
+    }
+    func aaa(index: Int ,complition: (Int) -> Void ) {
+        var fruitNum = 0
+        fruitNum = index
+        complition(fruitNum)
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(
+//            fruitIndex: 2
+            fruitIndex: {   return 0 }
+        )
     }
 }

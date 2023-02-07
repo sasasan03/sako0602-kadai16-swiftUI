@@ -11,7 +11,8 @@ import SwiftUI
 struct Kadai16_Sako0602_SwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            SwiftUIView()
+            ContentView(fruitIndex: {  return 0 })
         }
     }
 }
