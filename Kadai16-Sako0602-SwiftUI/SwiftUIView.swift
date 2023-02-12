@@ -2,37 +2,44 @@
 //  SwiftUIView.swift
 //  Kadai16-Sako0602-SwiftUI
 //
-//  Created by sako0602 on 2023/02/07.
+//  Created by sako0602 on 2023/02/12.
 //
 
 import SwiftUI
 
 struct SwiftUIView: View {
-    @State var array = ["a","b","c"]
-//    @State var number: (Int) -> Int
-    @State var number = 0
-    var body: some View {
-        List {
-            ForEach(array.indices, id: \.self) { index in
-                Button {
-                    print(">>>1",number)
-//                    number = index
-                    let bbb = aaa(index: index)
-                    number = bbb()
-                    print(">>>2",number)
-                } label: {
-                    Text(array[index])
-                        .font(.largeTitle)
-                }
-            }
-        }
+    @State var sheetDetail: InventoryItem?
+       var body: some View {
+           Button("Show Part Details") {
+               sheetDetail = InventoryItem(
+                   id: "0123456789",
+                   partNumber: "Z-1234A",
+                   quantity: 100,
+                   name: "Widget")
+           }
+           .sheet(item: $sheetDetail,
+                  onDismiss: didDismiss) { detail in
+               VStack(alignment: .leading, spacing: 20) {
+                   Text("Part Number: \(detail.partNumber)")
+                   Text("Name: \(detail.name)")
+                   Text("Quantity On-Hand: \(detail.quantity)")
+               }
+               .onTapGesture {
+                   sheetDetail = nil
+               }
+           }
+       }
+    
+    func didDismiss() {
+        // Handle the dismissing action.
     }
-    func aaa(index: Int) -> (()-> Int) {
-        return { () -> Int in
-            number = index
-            return number
-        }
-    }
+}
+
+struct InventoryItem: Identifiable {
+    var id: String
+    let partNumber: String
+    let quantity: Int
+    let name: String
 }
 
 struct SwiftUIView_Previews: PreviewProvider {
