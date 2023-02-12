@@ -12,7 +12,8 @@ struct ContentView: View {
     
     @State private var isPresentedAddView = false
     @State private var isPresentedEditVIew = false
-    @State var fruitIndex: Int = 0
+    @State var editFruit: FruitsData? = nil
+   @State  var selectedIndex: Int = 0
 //    @State var fruitIndex: () -> Int
     @State private var fruitArray = [
         FruitsData(name: "もも", isChecked: false),
@@ -45,23 +46,26 @@ struct ContentView: View {
                         .foregroundColor(Color.black)
                         Spacer()
                         Button {
-                            print(">>>fruitIndex", fruitIndex)
+//                            print(">>>fruitIndex", fruitIndex)
 //                            fruitIndex = capture(index: index)()//❌
 //                            fruitIndex = index
-                            print("¥¥¥fruitIndex", fruitIndex)
+//                            print("¥¥¥fruitIndex", fruitIndex)
 //                            appDate(index: fruitIndex, text: fruitArray[fruitIndex].name)//🙆
-                            aaa(index: index) { num in
-                                fruitIndex
-                            }
+//                            aaa(index: index) { num in
+//                                fruitIndex
+//                            }
+                            selectedIndex = index
+                            editFruit = fruitArray[index]
+//                            appDate(index: fruitIndex, text: <#T##String#>)
+                            
+//                            fruitIndex = index
 //                                fruitIndex = {
-//                                    var fruitNum = 0
-//                                    fruitNum = index
-//                                    return fruitNum
+//                                    print(#function, index)
+//                                    return index
 //                                }
 //                            fruitArray[fruitIndex].name = capture(index: index)()//🙆
-                            let checkNum = fruitIndex()
-                            print("++++", checkNum)
-                            print("***fruitIndex", fruitIndex)
+//                            let checkNum = fruitIndex()
+                           
                             isPresentedEditVIew = true
                         } label: {
                             Image(systemName: "info.circle")
@@ -80,34 +84,37 @@ struct ContentView: View {
                     .padding()
                 }
             }
-            .sheet(isPresented: $isPresentedAddView) {
-                FruitsAddView(
-                    save: { name in
-                        fruitArray.append(FruitsData(name: name, isChecked: false))
-                        isPresentedAddView = false
-                    } ,cancel: {
-                        isPresentedAddView = false
-                    }
-                )
-            }
-            .sheet(isPresented: $isPresentedEditVIew) {
-                
-                let jjj = fruitIndex()
-                let _ = print("|||", jjj)
+//            .sheet(isPresented: $isPresentedAddView) {
+//                FruitsAddView(
+//                    save: { name in
+//                        fruitArray.append(FruitsData(name: name, isChecked: false))
+//                        isPresentedAddView = false
+//                    } ,cancel: {
+//                        isPresentedAddView = false
+//                    }
+//                )
+//            }
+            .sheet(item: $editFruit, content: { editFruit in
+//                    $fruitArray[editFruit], content: { index in
                 EditView (
-                    fruitNewItem: fruitArray[fruitIndex()].name,//ここで関数を読んで上書き
+                    fruitNewItem: editFruit.name,//ここで関数を読んで上書き
                     save: { name in
-                        print(">>>sheet", fruitIndex)
-                        print(">>>", fruitArray[fruitIndex()].name)
-                        fruitArray[fruitIndex()].name = name
-                        fruitArray[fruitIndex()].isChecked = false
+//                        print(">>>sheet", fruitIndex)
+//                        print(">>>", fruitArray[fruitIndex()].name)
+                        fruitArray[selectedIndex].name = name
+                        fruitArray[selectedIndex].isChecked = false
                         isPresentedEditVIew = false
                     },
                     cancel: {
                         isPresentedEditVIew = false
                     }
                 )
-            }
+            })
+//            .sheet(isPresented: $isPresentedEditVIew) {
+//                let jjj = fruitIndex
+//                let _ = print("|||", jjj)
+//
+//            }
         }
     }
     func appDate(index: Int, text: String) {
@@ -120,11 +127,16 @@ struct ContentView: View {
     }
 }
 
+extension Int: Identifiable {
+    public var id: Int{
+        return self
+    }
+}
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView(
 //            fruitIndex: 2
-            fruitIndex: {   return 0 }
         )
     }
 }

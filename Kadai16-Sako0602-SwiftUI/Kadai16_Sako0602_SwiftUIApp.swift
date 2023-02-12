@@ -12,7 +12,7 @@ struct Kadai16_Sako0602_SwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
 //            SwiftUIView()
-            ContentView(fruitIndex: {  return 0 })
+            ContentView()
         }
     }
 }
