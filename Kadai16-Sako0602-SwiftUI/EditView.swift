@@ -9,6 +9,7 @@ import SwiftUI
 
 struct EditView: View {
     
+    @Environment(\.dismiss) var dismiss
     @State var fruitNewItem: String
     @State private var textFruits = ""
     let save: (String) -> Void
@@ -27,6 +28,7 @@ struct EditView: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("Cancel"){
                         cancel()
+                        dismiss()
                     }
                 }
             }
@@ -35,6 +37,7 @@ struct EditView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("save"){
                         save(fruitNewItem)
+                        dismiss()
                     }
                 }
             }

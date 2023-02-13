@@ -14,7 +14,7 @@ struct ContentView: View {
     @State var editFruit: FruitsData? = nil
     @State  var selectedIndex: Int = 0
     @State private var fruitArray = [
-        FruitsData(name: "もも", isChecked: false),
+        FruitsData(name: "りんご", isChecked: false),
         FruitsData(name: "みかん", isChecked: true),
         FruitsData(name: "バナナ", isChecked: false),
         FruitsData(name: "パイナップル", isChecked: true),
@@ -72,31 +72,20 @@ struct ContentView: View {
                     }
                 )
             }
-            .sheet(item: $editFruit, onDismiss: {
-//                self.editFruit.map { item in item.save() }
-//                isPresentedEditVIew = false
-            }) { editFruit in
-                let _ = print(">>>editFruit",editFruit)
+            .sheet(item: $editFruit) { editFruit in
                 EditView (
                     fruitNewItem: editFruit.name,
                     save: { name in
                         fruitArray[selectedIndex].name = name
                         fruitArray[selectedIndex].isChecked = false
-                        print("~~~flag1",isPresentedEditVIew)
                         isPresentedEditVIew = false
-                        print("~~~flag2",isPresentedEditVIew)
                     },
                     cancel: {
-                        print("~~~flag3",isPresentedEditVIew)
                         isPresentedEditVIew = false
-                        print("~~~flag4",isPresentedEditVIew)
                     }
                 )
             }
         }
-    }
-    func didDismiss(){
-        isPresentedEditVIew = false
     }
 }
 
