@@ -10,8 +10,6 @@
 		6947E4EF29881344009294D3 /* FruitsAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6947E4EE29881344009294D3 /* FruitsAddView.swift */; };
 		6947E4F129881349009294D3 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6947E4F029881349009294D3 /* EditView.swift */; };
 		6947E4F32988134F009294D3 /* FruitData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6947E4F22988134F009294D3 /* FruitData.swift */; };
-		698C91BD2999134100036BB7 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698C91BC2999134100036BB7 /* SwiftUIView.swift */; };
-		698C91BF2999375000036BB7 /* SwiftUIView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698C91BE2999375000036BB7 /* SwiftUIView2.swift */; };
 		69BD0E862984EF8100F79946 /* Kadai16_Sako0602_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BD0E852984EF8100F79946 /* Kadai16_Sako0602_SwiftUIApp.swift */; };
 		69BD0E882984EF8100F79946 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BD0E872984EF8100F79946 /* ContentView.swift */; };
 		69BD0E8A2984EF8700F79946 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69BD0E892984EF8700F79946 /* Assets.xcassets */; };
@@ -42,8 +40,6 @@
 		6947E4EE29881344009294D3 /* FruitsAddView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FruitsAddView.swift; sourceTree = "<group>"; };
 		6947E4F029881349009294D3 /* EditView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		6947E4F22988134F009294D3 /* FruitData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FruitData.swift; sourceTree = "<group>"; };
-		698C91BC2999134100036BB7 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
-		698C91BE2999375000036BB7 /* SwiftUIView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView2.swift; sourceTree = "<group>"; };
 		69BD0E822984EF8100F79946 /* Kadai16-Sako0602-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kadai16-Sako0602-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		69BD0E852984EF8100F79946 /* Kadai16_Sako0602_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kadai16_Sako0602_SwiftUIApp.swift; sourceTree = "<group>"; };
 		69BD0E872984EF8100F79946 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -106,8 +102,6 @@
 			children = (
 				69BD0E852984EF8100F79946 /* Kadai16_Sako0602_SwiftUIApp.swift */,
 				69BD0E872984EF8100F79946 /* ContentView.swift */,
-				698C91BC2999134100036BB7 /* SwiftUIView.swift */,
-				698C91BE2999375000036BB7 /* SwiftUIView2.swift */,
 				6947E4EE29881344009294D3 /* FruitsAddView.swift */,
 				6947E4F029881349009294D3 /* EditView.swift */,
 				6947E4F22988134F009294D3 /* FruitData.swift */,
@@ -274,9 +268,7 @@
 			files = (
 				69BD0E882984EF8100F79946 /* ContentView.swift in Sources */,
 				6947E4F32988134F009294D3 /* FruitData.swift in Sources */,
-				698C91BD2999134100036BB7 /* SwiftUIView.swift in Sources */,
 				69BD0E862984EF8100F79946 /* Kadai16_Sako0602_SwiftUIApp.swift in Sources */,
-				698C91BF2999375000036BB7 /* SwiftUIView2.swift in Sources */,
 				6947E4F129881349009294D3 /* EditView.swift in Sources */,
 				6947E4EF29881344009294D3 /* FruitsAddView.swift in Sources */,
 			);
