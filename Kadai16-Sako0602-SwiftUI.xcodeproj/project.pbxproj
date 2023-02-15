@@ -50,6 +50,7 @@
 		69BD0E9C2984EF8800F79946 /* Kadai16-Sako0602-SwiftUIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Kadai16-Sako0602-SwiftUIUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		69BD0EA02984EF8800F79946 /* Kadai16_Sako0602_SwiftUIUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kadai16_Sako0602_SwiftUIUITests.swift; sourceTree = "<group>"; };
 		69BD0EA22984EF8800F79946 /* Kadai16_Sako0602_SwiftUIUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kadai16_Sako0602_SwiftUIUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		69F783BA299CF6C0008EDE03 /* firstIndex.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = firstIndex.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +103,7 @@
 			children = (
 				69BD0E852984EF8100F79946 /* Kadai16_Sako0602_SwiftUIApp.swift */,
 				69BD0E872984EF8100F79946 /* ContentView.swift */,
+				69F783BA299CF6C0008EDE03 /* firstIndex.playground */,
 				6947E4EE29881344009294D3 /* FruitsAddView.swift */,
 				6947E4F029881349009294D3 /* EditView.swift */,
 				6947E4F22988134F009294D3 /* FruitData.swift */,
