@@ -12,7 +12,6 @@ struct ContentView: View {
     @State private var isPresentedAddView = false
     @State private var isPresentedEditVIew = false
     @State var editFruit: FruitsData? = nil
-//    @State  var selectedIndex: Int = 0
     @State private var fruitArray = [
         FruitsData(name: "りんご", isChecked: false),
         FruitsData(name: "みかん", isChecked: true),
@@ -80,8 +79,6 @@ struct ContentView: View {
                             $0.id == editFruit.id
                         }) else { return }
                         print(">>>index",index)
-//                        fruitArray[selectedIndex].name = name
-//                        fruitArray[selectedIndex].isChecked = false
                         fruitArray[index].name = name
                         fruitArray[index].isChecked = false
                         isPresentedEditVIew = false
